@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Avião em Combate</title>
+  <style>
+    body { background: #1a1a2e; text-align: center; color: white; font-family: Arial; }
+    canvas { border: 1px solid white; }
+  </style>
+</head>
+<body>
+  <h1>🚀 Avião em Combate</h1>
+  <canvas id="gameCanvas" width="400" height="500"></canvas>
+  <p>Pontos: <span id="pontos">0</span></p>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    let pontos = 0;
+
+    // Avião
+    let aviao = { x: 200, y: 400, width: 50, height: 50 };
+
+    // Inimigos
+    let inimigos = [];
+    function criarInimigo() {
+      inimigos.push({
+        x: Math.random() * 350,
+        y: 0,
+        width: 30,
+        height: 30,
+        speed: 2 + Math.random() * 3
+      });
+    }
+
+    setInterval(criarInimigo, 1000);
+
+    // Disparos
+    let disparos = [];
+    canvas.addEventListener('click', (e) => {
+      disparos.push({
+        x: aviao.x + aviao.width / 2,
+        y: aviao.y,
+        speed: 5
+      });
+    });
+
+    function loop() {
+      ctx.clearRect(0, 0, 400, 500);
+
+      // Desenha avião
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(aviao.x, aviao.y, aviao.width, aviao.height);
+
+      // Move inimigos
+      inimigos.forEach((inimigo, i) => {
+        inimigo.y += inimigo.speed;
+        ctx.fillStyle = 'red';
+        ctx.fillRect(inimigo.x, inimigo.y, inimigo.width, inimigo.height);
+        if (inimigo.y > 500) inimigos.splice(i, 1);
+      });
+
+      // Disparos
+      disparos.forEach((d, i) => {
+        d.y -= d.speed;
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(d.x, d.y, 5, 10);
+        if (d.y < 0) disparos.splice(i, 1);
+
+        // Colisão
+        inimigos.forEach((inimigo, j) => {
+          if (d.x > inimigo.x && d.x < inimigo.x + inimigo.width &&
+              d.y < inimigo.y + inimigo.height) {
+            inimigos.splice(j, 1);
+            disparos.splice(i, 1);
+            pontos++;
+            document.getElementById('pontos').textContent = pontos;
+          }
+        });
+      });
+
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>
