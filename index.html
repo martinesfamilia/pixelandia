@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aventuras Pixelândia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      background: #1a1a2e;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+    .game {
+      margin: 20px;
+      display: inline-block;
+    }
+    canvas {
+      border: 2px solid #e74c3c;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Aventuras Pixelândia</h1>
+  
+  <div class="game">
+    <h3>Cuida do Meu Pet</h3>
+    <canvas id="petGame" width="300" height="400"></canvas><br>
+    <button onclick="alimentar()">🍔 Alimentar</button>
+    <button onclick="banho()">🛁 Banho</button>
+    <button onclick="carinho()">❤️ Carinho</button>
+    <button onclick="brincar()">🏃‍♂️ Tamighuxe</button>
+  </div>
+  
+  <div class="game">
+    <h3>Cores Mágicas</h3>
+    <canvas id="coresGame" width="300" height="400"></canvas>
+  </div>
+
+  <script>
+    // Lógica dos jogos aqui (vou simplificar)
+    let petFase = 0;
+    function alimentar() { alert('Você alimentou o pet! 🍔'); }
+    function banho() { alert('Você deu banho no pet! 🛁'); }
+    function carinho() { alert('Você deu carinho no pet! ❤️'); }
+    function brincar() { alert('Você brincou com o pet! 🏃‍♂️'); }
+  </script>
+</body>
+</html>
