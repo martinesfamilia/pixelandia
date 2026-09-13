@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tim Schafer Aventura</title>
+  <style>
+    body { background: #ffcc00; font-family: Arial; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🤯 Mundo Bizarro</h1>
+  <p id="historia">Você acorda em um lugar estranho. O que fazer?</p>
+  <button onclick="capitulo(1)">Comer um abacate 🥑</button>
+  <button onclick="capitulo(2)">Seguir o coelho 🐰</button>
+
+  <script>
+    const textos = {
+      1: {
+        historia: "Você virou um abacate! 😱",
+        opcoes: [
+          { texto: "Rolar no chão", proximo: 3 },
+          { texto: "Fugir", proximo: 4 }
+        ]
+      },
+      2: {
+        historia: "O coelho te leva a um buraco.",
+        opcoes: [
+          { texto: "Entrar no buraco", proximo: 5 },
+          { texto: "Voltar", proximo: 1 }
+        ]
+      },
+      3: { historia: "Você rolou e encontrou um portal.", opcoes: [{ texto: "Entrar", proximo: 6 }] },
+      4: { historia: "Você fugiu... e se perdeu.", opcoes: [{ texto: "Tentar de novo", proximo: 1 }] },
+      5: { historia: "No buraco, coisas loucas acontecem.", opcoes: [{ texto: "Lugar 5", proximo: 6 }] },
+      6: { historia: "Você salvou o mundo bizarro!", opcoes: [] },
+      // Adicione mais capítulos aqui (7 a 12)
+    };
+
+    let capituloAtual = 1;
+    function capitulo(num) {
+      const c = textos[num];
+      document.getElementById('historia').innerText = c.historia;
+      const botoes = document.querySelectorAll('button');
+      botoes.forEach((b, i) => {
+        if (c.opcoes[i]) {
+          b.innerText = c.opcoes[i].texto;
+          b.onclick = () => capitulo(c.opcoes[i].proximo);
+        } else {
+          b.style.display = 'none';
+        }
+      });
+    }
+    capitulo(1);
+  </script>
+</body>
+</html>

@@ -1,60 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Aventuras Pixelândia</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aventuras Pixelândia</title>
+
   <style>
     body {
       margin: 0;
+      padding: 20px;
       background: #1a1a2e;
       color: white;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
-    .game {
-      margin: 20px;
-      display: inline-block;
+
+    h1 {
+      color: #f1c40f;
     }
+
+    .game {
+      display: inline-block;
+      vertical-align: top;
+      margin: 20px;
+      padding: 20px;
+      background: #252545;
+      border-radius: 15px;
+    }
+
     canvas {
+      display: block;
       border: 2px solid #e74c3c;
       border-radius: 10px;
+      background: #111122;
+      margin-bottom: 10px;
     }
+
     button {
       padding: 10px 20px;
+      margin: 6px;
       font-size: 16px;
       background: #e74c3c;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin: 10px;
+    }
+
+    button:hover {
+      background: #c0392b;
+    }
+
+    .aventura {
+      background: #8e44ad;
+    }
+
+    .aventura:hover {
+      background: #71368a;
     }
   </style>
 </head>
+
 <body>
-  <h1>Aventuras Pixelândia</h1>
-  
+  <h1>🎮 Aventuras Pixelândia</h1>
+
   <div class="game">
-    <h3>Cuida do Meu Pet</h3>
-    <canvas id="petGame" width="300" height="400"></canvas><br>
+    <h2>🐾 Cuida do Meu Pet</h2>
+
+    <canvas id="petGame" width="300" height="400"></canvas>
+
     <button onclick="alimentar()">🍔 Alimentar</button>
     <button onclick="banho()">🛁 Banho</button>
     <button onclick="carinho()">❤️ Carinho</button>
-    <button onclick="brincar()">🏃‍♂️ Tamighuxe</button>
+    <button onclick="brincar()">🏃 Brincar</button>
   </div>
-  
+
   <div class="game">
-    <h3>Cores Mágicas</h3>
+    <h2>🎨 Cores Mágicas</h2>
+
     <canvas id="coresGame" width="300" height="400"></canvas>
+
+    <p>Um jogo de cores será adicionado aqui.</p>
+  </div>
+
+  <div class="game">
+    <h2>🤯 Mundo Bizarro</h2>
+
+    <p>Uma aventura no estilo Tim Schafer.</p>
+
+    <button
+      class="aventura"
+      onclick="location.href='games/timschafer.html'">
+      Jogar Mundo Bizarro
+    </button>
   </div>
 
   <script>
-    // Lógica dos jogos aqui (vou simplificar)
-    let petFase = 0;
-    function alimentar() { alert('Você alimentou o pet! 🍔'); }
-    function banho() { alert('Você deu banho no pet! 🛁'); }
-    function carinho() { alert('Você deu carinho no pet! ❤️'); }
-    function brincar() { alert('Você brincou com o pet! 🏃‍♂️'); }
+    function alimentar() {
+      alert('Você alimentou o pet! 🍔');
+    }
+
+    function banho() {
+      alert('Você deu banho no pet! 🛁');
+    }
+
+    function carinho() {
+      alert('Você deu carinho ao pet! ❤️');
+    }
+
+    function brincar() {
+      alert('Você brincou com o pet! 🏃');
+    }
   </script>
 </body>
 </html>
